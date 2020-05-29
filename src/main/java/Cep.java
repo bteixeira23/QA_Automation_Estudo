@@ -1,12 +1,21 @@
 public class Cep {
 
+    static String retorno;
+
     public String ValidacaoCep(String cep) {
+
         if ( cep.length() == 9 ){
-            return "Cep Válido";
+            retorno = "Cep Válido";
         }
         else if (cep.length() < 9){
-            return "Cep incompleto";
+            retorno = "Cep incompleto";
+        } else {
+            retorno = "Cep Inválido";
         }
-        return "Cep Inválido";
+        return retorno;
+
+    }
+    public  String Processamento () {
+        return retorno;
     }
 }

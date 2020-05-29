@@ -8,7 +8,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Cep.class)
 
-public class Teste_Cadastro {
+public class Teste_Cep {
 
     @Test // Teste de validação de CEP dentro do esperado
     public void ValidacaoCep (){
@@ -66,20 +66,17 @@ public class Teste_Cadastro {
         Cep Cep = new Cep();
         final String Method = "ValidacaoCep";
         Cep spy = PowerMockito.spy(Cep);
-        PowerMockito.when(spy,Method,"02111031").thenReturn((String) "Cep válido");
+        PowerMockito.when(spy,Method,"0211100310").thenReturn((String) "Cep Inválido");
 
-        String esperado =  "Cep Válido";
+        String esperado =  "Cep Inválido";
         String atual = "0";
 
         //act
-        atual = Cep.ValidacaoCep("12345-678");
+        atual = spy.Processamento();
         System.out.println(atual);
 
         //assert
 
         Assert.assertEquals(esperado, atual);
     }
-
-
-
 }
